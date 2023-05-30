@@ -29,19 +29,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import NameInput from './FormComponents/NameInput';
 import PasswordInput from './FormComponents/PasswordInput';
 import EmailInput from './FormComponents/EmailInput';
-
-const cities = [
-  '',
-  'Bishkek',
-  'Osh',
-  'Jalalabad',
-  'Kara-Balta',
-  'Issykkul',
-  'Batken',
-  'Naryn',
-  'Talas',
-  'Tokmok',
-];
+import SelectInput from './FormComponents/SelectInput';
 
 const Form = () => {
   const [open, setOpen] = React.useState(false);
@@ -99,41 +87,7 @@ const Form = () => {
         <NameInput register={register} errors={errors} />
         <PasswordInput register={register} errors={errors} />
         <EmailInput register={register} errors={errors} />
-        <FormControl sx={{ width: '100%' }} margin="normal">
-          <InputLabel id="custom-select-label">Select City of Birth</InputLabel>
-          <Controller
-            control={control}
-            name="birthCity"
-            rules={{ required: 'City of Birth is required' }}
-            render={({ field }) => (
-              <Select
-                {...field}
-                labelId="custom-select-label"
-                id="custom-select"
-                label="Select City of Birth"
-                fullWidth
-                value={field.value}
-                onChange={(e) => field.onChange(e.target.value)}
-                error={!!errors.birthCity}
-              >
-                <MenuItem value="">None</MenuItem>
-                {cities.map((birthCity) => {
-                  return (
-                    <MenuItem key={birthCity} value={birthCity}>
-                      {birthCity}
-                    </MenuItem>
-                  );
-                })}
-              </Select>
-            )}
-          />
-
-          {errors.birthCity && (
-            <Typography variant="caption" sx={{ color: 'red' }}>
-              {errors.birthCity?.message}
-            </Typography>
-          )}
-        </FormControl>
+        <SelectInput errors={errors} control={control} />
         <FormControl margin="normal">
           <FormGroup
             sx={{
