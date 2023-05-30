@@ -77,10 +77,6 @@ const Form = () => {
       props: { errors, register },
     },
     {
-      component: RadioInput,
-      props: { errors, control },
-    },
-    {
       component: DatePickerComponent,
       props: { errors, control },
     },
@@ -105,6 +101,23 @@ const Form = () => {
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {formComponents.map((item, index) => {
           const { component: Component, props } = item;
+          if (Component === DatePickerComponent) {
+            return (
+              <Box
+                key={index}
+                display="flex"
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                <Box flexGrow={1}>
+                  <Component {...props} />
+                </Box>
+                <Box ml={2}>
+                  <RadioInput {...props} />
+                </Box>
+              </Box>
+            );
+          }
           return <Component key={index} {...props} />;
         })}
         <Button type="submit" variant="contained" fullWidth disabled={!isValid}>
