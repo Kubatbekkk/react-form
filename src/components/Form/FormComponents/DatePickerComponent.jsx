@@ -6,6 +6,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const DatePickerComponent = ({ control, errors }) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   return (
     <FormControl margin="normal">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -14,6 +17,12 @@ const DatePickerComponent = ({ control, errors }) => {
           name="dateOfFlight"
           rules={{
             required: 'Please select date of flight',
+            validate: (value) => {
+              if (value < today) {
+                return 'Date must not be earlier than today';
+              }
+              return true;
+            },
           }}
           render={({ field }) => (
             <DatePicker
