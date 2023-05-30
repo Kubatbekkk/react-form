@@ -26,6 +26,7 @@ import EmailInput from './FormComponents/EmailInput';
 import SelectInput from './FormComponents/SelectInput';
 import CheckboxInput from './FormComponents/CheckboxInput';
 import TextareaInput from './FormComponents/TextareaInput';
+import RadioInput from './FormComponents/RadioInput';
 
 const Form = () => {
   const [open, setOpen] = React.useState(false);
@@ -88,44 +89,7 @@ const Form = () => {
         <TextareaInput errors={errors} register={register} />
 
         <Box display="flex" alignItems="center" justifyContent="space-between">
-          <FormControl margin="normal">
-            <FormLabel>Select your gender</FormLabel>
-            <Controller
-              control={control}
-              name="gender"
-              rules={{
-                required: 'Please select your gender',
-              }}
-              render={({ field }) => (
-                <RadioGroup
-                  {...field}
-                  name="radio-buttons-group"
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'flex-start',
-                  }}
-                >
-                  <FormControlLabel
-                    value="male"
-                    control={<Radio />}
-                    label="Male"
-                  />
-                  <FormControlLabel
-                    value="female"
-                    control={<Radio />}
-                    label="Female"
-                  />
-                </RadioGroup>
-              )}
-              error={!!errors.gender}
-            />
-            {errors.gender && (
-              <Typography variant="caption" sx={{ color: 'red' }}>
-                {errors.gender?.message}
-              </Typography>
-            )}
-          </FormControl>
+          <RadioInput errors={errors} control={control} />
 
           <FormControl margin="normal">
             {/* <FormLabel sx={{ marginBottom: '5px' }}>Select your date</FormLabel> */}
