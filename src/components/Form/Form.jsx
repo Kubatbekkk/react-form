@@ -14,7 +14,6 @@ import {
   Box,
 } from '@mui/material';
 
-import Textarea from '@mui/joy/Textarea';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
 
 // ? datepicker imports
@@ -26,6 +25,7 @@ import PasswordInput from './FormComponents/PasswordInput';
 import EmailInput from './FormComponents/EmailInput';
 import SelectInput from './FormComponents/SelectInput';
 import CheckboxInput from './FormComponents/CheckboxInput';
+import TextareaInput from './FormComponents/TextareaInput';
 
 const Form = () => {
   const [open, setOpen] = React.useState(false);
@@ -85,30 +85,7 @@ const Form = () => {
         <EmailInput register={register} errors={errors} />
         <SelectInput errors={errors} control={control} />
         <CheckboxInput errors={errors} control={control} />
-
-        <FormControl margin="normal" fullWidth>
-          <Textarea
-            placeholder="Type in here…"
-            minRows={3}
-            maxRows={3}
-            size="sm"
-            variant="outlined"
-            margin="normal"
-            {...register('message', {
-              required: 'Message is required',
-              maxLength: {
-                value: 200,
-                message: 'Message should not exceed 200 characters',
-              },
-            })}
-            error={!!errors.message}
-          />
-          {errors.message && (
-            <Typography variant="caption" sx={{ color: 'red' }}>
-              {errors.message?.message}
-            </Typography>
-          )}
-        </FormControl>
+        <TextareaInput errors={errors} register={register} />
 
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <FormControl margin="normal">
