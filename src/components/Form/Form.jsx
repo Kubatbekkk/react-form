@@ -3,15 +3,10 @@ import Modal from '../Modal/Modal';
 import './style.css';
 import {
   FormControl,
-  FormGroup,
   FormLabel,
   FormControlLabel,
-  InputLabel,
-  Select,
-  MenuItem,
   TextField,
   Button,
-  Checkbox,
   RadioGroup,
   Radio,
   Typography,
@@ -30,6 +25,7 @@ import NameInput from './FormComponents/NameInput';
 import PasswordInput from './FormComponents/PasswordInput';
 import EmailInput from './FormComponents/EmailInput';
 import SelectInput from './FormComponents/SelectInput';
+import CheckboxInput from './FormComponents/CheckboxInput';
 
 const Form = () => {
   const [open, setOpen] = React.useState(false);
@@ -88,45 +84,7 @@ const Form = () => {
         <PasswordInput register={register} errors={errors} />
         <EmailInput register={register} errors={errors} />
         <SelectInput errors={errors} control={control} />
-        <FormControl margin="normal">
-          <FormGroup
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-            }}
-          >
-            <Controller
-              control={control}
-              name="acceptTerms"
-              rules={{
-                validate: (value) =>
-                  value === true ||
-                  'Please accept the Terms & Conditions in order to proceed',
-              }}
-              render={({ field }) => (
-                <>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        {...field}
-                        checked={field.value}
-                        onChange={(e) => field.onChange(e.target.checked)}
-                      />
-                    }
-                    label="Accept Terms & Conditions"
-                  />
-                  {errors.acceptTerms && (
-                    <Typography variant="caption" sx={{ color: 'red' }}>
-                      {errors.acceptTerms?.message}
-                    </Typography>
-                  )}
-                </>
-              )}
-            />
-          </FormGroup>
-        </FormControl>
+        <CheckboxInput errors={errors} control={control} />
 
         <FormControl margin="normal" fullWidth>
           <Textarea
