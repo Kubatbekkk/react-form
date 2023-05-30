@@ -1,6 +1,5 @@
 import { Textarea } from '@mui/joy';
 import { FormControl, Typography } from '@mui/material';
-import React from 'react';
 
 const TextareaInput = ({ errors, register }) => {
   return (

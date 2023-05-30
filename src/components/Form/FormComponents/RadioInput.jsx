@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   FormControl,
   FormControlLabel,
@@ -6,7 +7,6 @@ import {
   Radio,
   Typography,
 } from '@mui/material';
-import React from 'react';
 import { Controller } from 'react-hook-form';
 
 const RadioInput = ({ errors, control }) => {

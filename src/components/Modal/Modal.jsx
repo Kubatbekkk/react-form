@@ -1,4 +1,4 @@
-import { Button, Box, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';

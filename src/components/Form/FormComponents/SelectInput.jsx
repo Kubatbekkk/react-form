@@ -5,7 +5,6 @@ import {
   Select,
   Typography,
 } from '@mui/material';
-import React from 'react';
 import { Controller } from 'react-hook-form';
 
 const cities = [

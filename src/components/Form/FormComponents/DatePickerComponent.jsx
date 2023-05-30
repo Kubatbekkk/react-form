@@ -1,5 +1,4 @@
 import { FormControl } from '@mui/material';
-import React from 'react';
 import { Controller } from 'react-hook-form';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';

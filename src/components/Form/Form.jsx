@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Typography, Divider, Box } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import Modal from '../Modal/Modal';
